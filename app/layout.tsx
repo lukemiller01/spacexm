@@ -1,4 +1,6 @@
-import './globals.css'
+import './globals.css';
+import ApolloExtractCache from "./ApolloExtractCache";
+import Provider from './ApolloProviderWrapper';
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,7 +14,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Provider>
+            {children}
+            {/* @ts-expect-error Server Component */}
+            <ApolloExtractCache />
+        </Provider>
+      </body>
     </html>
   )
 }
