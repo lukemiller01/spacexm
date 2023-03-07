@@ -2,8 +2,6 @@ query getPastLaunches($limit: Int) {
   launchesPast(limit: $limit) {
     id
     mission_name
-    links {
-      mission_patch
-    }
+    launch_date_utc
   }
 }

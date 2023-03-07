@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query getPastLaunches($limit: Int) {\n    launchesPast(limit: $limit) {\n      id\n      mission_name\n      links {\n        mission_patch\n      }\n    }\n  }\n": types.GetPastLaunchesDocument,
+    "\n  query getPastLaunches($limit: Int) {\n    launchesPast(limit: $limit) {\n      id\n      mission_name\n      launch_date_utc\n    }\n  }\n": types.GetPastLaunchesDocument,
 };
 
 /**
@@ -33,7 +33,7 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query getPastLaunches($limit: Int) {\n    launchesPast(limit: $limit) {\n      id\n      mission_name\n      links {\n        mission_patch\n      }\n    }\n  }\n"): (typeof documents)["\n  query getPastLaunches($limit: Int) {\n    launchesPast(limit: $limit) {\n      id\n      mission_name\n      links {\n        mission_patch\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query getPastLaunches($limit: Int) {\n    launchesPast(limit: $limit) {\n      id\n      mission_name\n      launch_date_utc\n    }\n  }\n"): (typeof documents)["\n  query getPastLaunches($limit: Int) {\n    launchesPast(limit: $limit) {\n      id\n      mission_name\n      launch_date_utc\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
