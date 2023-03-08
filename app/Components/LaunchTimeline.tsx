@@ -14,9 +14,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-// Interface for Data
-// import { Data } from '../page';
-
+// Registering a chart from Chart.js
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -26,16 +24,16 @@ ChartJS.register(
     Legend,
 );
 
+// Adding default styles to ChartJS object
 ChartJS.defaults.font.size = 16;
 ChartJS.defaults.font.weight = '500';
 // ChartJS.defaults.font.family = '';
 
-// Options for charts
+// Chart options
 const options = {
     responsive: true,
     plugins: {
       legend: {
-        // position: 'top' as const,
         display: false
       },
       title: {
@@ -43,19 +41,28 @@ const options = {
         text: 'Launches',
       },
     },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        }
+      },
+      y: {
+        grid: {
+          color: '#9A9A9A'
+        }
+      }
+    }
 };
 
 // Interface to store the data from the prop
 interface Data {
-    data: {
-        [key: string]: number
-    }
+  data: {
+      [key: string]: number
+  }
 }
 
 const LaunchTimeline = ({data}: Data) => {
-
-    console.log(typeof data)
-    console.log(data)
 
     // Keys in a dictionary are always strings. If, for any reason, these need to be converted to int: map(function(x) {return parseInt(x)})
     var keys = Object.keys(data); // Years
@@ -74,7 +81,10 @@ const LaunchTimeline = ({data}: Data) => {
     }
 
   return (
-    <Bar options={options} data={parsedData} className={'bg-black'}/>
+    <div className='w-full flex flex-col border-white rounded-xl border-2 p-4 text-center gap-4'>
+      <h2 className=' text-white'>Yearly Cadence</h2>
+      <Bar options={options} data={parsedData} className={' bg-black'}/>
+    </div>
   )
 }
 

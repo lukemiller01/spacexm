@@ -1,4 +1,4 @@
-import { ApolloClient as BaseApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import { ApolloClient as BaseApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { ApolloClientOptions } from "@apollo/client/core/ApolloClient";
 
 // Trying to find MVP
@@ -26,7 +26,10 @@ class ApolloClient<TCacheShape> extends BaseApolloClient<TCacheShape> {
 
 export const apolloClient = new ApolloClient({
     ssrMode: true,
-    uri: "https://main--spacex-l4uc6p.apollographos.net/graphql",
+    // uri: "https://main--spacex-l4uc6p.apollographos.net/graphql",
     cache: new InMemoryCache().restore(global.__APOLLO_STATE__),
     connectToDevTools: true,
+    link: createHttpLink({
+        uri: "https://main--spacex-l4uc6p.apollographos.net/graphql",
+    }),
 });
