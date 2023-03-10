@@ -1,7 +1,8 @@
 import { ApolloQueryResult, TypedDocumentNode } from "@apollo/client/core/types";
-import React, {Suspense} from "react";
+import React from "react";
 import { apolloClient } from "./ApolloClient";
 import LaunchTimeline from "./Components/LaunchTimeline";
+import Navbar from "./Components/Navbar";
 import { gql } from './__generated__/gql';
 
 
@@ -37,7 +38,7 @@ async function getData() {
   }
 }
 
-// TODO: change the logic for an empty dictionary beign sent as a prop
+// TODO: change the logic for null sent as a prop
 export default async function Home() {
 
   // Get data from SpaceX API
@@ -45,8 +46,22 @@ export default async function Home() {
 
   return (
     <>
-    <div className=" flex mx-4 my-4 ">
-      {dict? <LaunchTimeline data={dict}/> : null}
+    <Navbar/>
+    <div className="mx-32 my-10">
+      <div className="grid grid-cols-2 grid-rows-1 py-6 gap-6" id="#home">
+        {dict? <LaunchTimeline data={dict}/> : null}
+        {dict? <LaunchTimeline data={dict}/> : null}
+      </div>
+      <div className="grid grid-cols-3 grid-rows-2 gap-6">
+        <div className=" row-span-2">
+          {dict? <LaunchTimeline data={dict}/> : null}
+        </div>
+        <div className=" col-span-2">
+          {dict? <LaunchTimeline data={dict}/> : null}
+        </div>
+        {dict? <LaunchTimeline data={dict}/> : null}
+        {dict? <LaunchTimeline data={dict}/> : null}
+      </div>
     </div>
     </>
   )

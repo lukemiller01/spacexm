@@ -7,6 +7,7 @@ SpaceXM tracks SpaceX's flight history between 2008-2022.
 - [x] Integrate the Apollo Client with NextJS 13
 - [x] Use the GraphQL code generator to make a query to the SpaceX GraphQL endpoint
 - [ ] Add granularity to the "Yearly Cadence" graph: type of rocket & mission
+- [ ] Add hash linking (awaiting [Next support](https://beta.nextjs.org/docs/app-directory-roadmap))
 - [ ] Add dynamic pages for mission details
 - [ ] Add Jest
 

@@ -32,6 +32,7 @@ ChartJS.defaults.font.weight = '500';
 // Chart options
 const options = {
     responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
         display: false
@@ -81,9 +82,9 @@ const LaunchTimeline = ({data}: Data) => {
     }
 
   return (
-    <div className='w-full flex flex-col border-white rounded-xl border-2 p-4 text-center gap-4'>
+    <div className='w-full h-full flex flex-col border-white rounded-xl border-2 p-4 text-center gap-4'>
       <h2 className=' text-white'>Yearly Cadence</h2>
-      <Bar options={options} data={parsedData} className={' bg-black'}/>
+      <Bar options={options} data={parsedData} className={' bg-black w-full h-100%'}/>
     </div>
   )
 }
